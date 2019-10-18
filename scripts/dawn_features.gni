@@ -44,4 +44,7 @@ declare_args() {
   # GLSL/HLSL/MSL compiler. This implicitly pulls in the GLSL
   # compiler, since it is a sub-class of if.
   dawn_enable_cross_reflection = false
+
+ # Enables compiler options for profiling
+  dawn_enable_profiling = false
 }

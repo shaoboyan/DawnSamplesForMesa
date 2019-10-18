@@ -67,6 +67,13 @@ config("dawn_internal") {
     defines += [ "DAWN_USE_X11" ]
   }
 
+ cflags = [ "-g" ]
+ ldflags = [ "-g" ]
+
+ if (dawn_enable_profiling) {
+    cflags += [ "-fno-omit-frame-pointer" ]
+ }
+
   # Only internal Dawn targets can use this config, this means only targets in
   # this BUILD.gn file.
   visibility = [ ":*" ]
