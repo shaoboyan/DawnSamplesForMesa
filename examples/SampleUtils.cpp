@@ -236,9 +236,11 @@ bool InitSample(int argc, const char** argv) {
             return false;
         }
         if (std::string("-h") == argv[i] || std::string("--help") == argv[i]) {
-            printf("Usage: %s [-b BACKEND] [-c COMMAND_BUFFER]\n", argv[0]);
+            printf("Usage: %s [-b BACKEND] [-c COMMAND_BUFFER] [-t TRIANGLE_PER_FRAME] [-f FRAME_NUMBER]\n", argv[0]);
             printf("  BACKEND is one of: d3d12, metal, null, opengl, vulkan\n");
             printf("  COMMAND_BUFFER is one of: none, terrible\n");
+	    printf("  TRIANGLE_PER_FRAME is the triangle numbers per frame for Animometer example\n");
+	    printf("  FRAME_NUMBER is the how many frame does the example run for Animometer example\n");
             return false;
         }
     }
