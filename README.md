@@ -31,7 +31,7 @@ Dawn provides several WebGPU building blocks:
   - `utils`: helper code to use Dawn used by tests and samples
 - `third_party`: directory where dependencies live as well as their buildfiles.
 
-## Building Dawn
+## Building Sample
 
 Dawn uses the Chromium build system and dependency management so you need to [install depot_tools] and add it to the PATH.
 
