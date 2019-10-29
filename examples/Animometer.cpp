@@ -21,6 +21,8 @@
 #include <cstdlib>
 #include <cstdio>
 #include <vector>
+#include <cstring>
+#include <iostream>
 
 dawn::Device device;
 dawn::Queue queue;
@@ -35,8 +37,8 @@ float RandomFloat(float min, float max) {
     return zeroOne * (max - min) + min;
 }
 
-constexpr size_t kNumTriangles = 10000;
-constexpr size_t kNumFrames = 60;
+size_t kNumTriangles = 10000;
+size_t kNumFrames = 600;
 
 struct alignas(kMinDynamicBufferOffsetAlignment) ShaderData {
     float scale;
@@ -278,6 +280,20 @@ int main(int argc, const char* argv[]) {
     if (!InitSample(argc, argv)) {
         return 1;
     }
+    char* pNext;
+    for (int i = 1; i < argc; i++) {
+        if (std::string("-t") == argv[i]) {
+	    kNumTriangles = strtol(argv[i++ + 1], &pNext, 10);
+	    printf("kNumTriangles = %lu\n", kNumTriangles);
+	    continue;
+	}
+        if (std::string("-f") == argv[i]) {
+	    kNumFrames = strtol(argv[ i++ + 1], &pNext, 10);
+	    printf("kNumFrames = %lu\n", kNumFrames);
+	    continue;
+	}
+    }
+
     init();
 
     for (size_t f = 0; f < kNumFrames && !ShouldQuit(); f++) {
